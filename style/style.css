@@ -1,0 +1,6 @@
+@import '../client/lib/codemirror/style.css';
+@import '../client/lib/codemirror.css';
+@import '../client/lib/codemirror/mdn-like.css';
+@import '../client/addon/hint/show-hint.css';
+@import '../client/addon/dialog/dialog.css';
+@import '../client/addon/search/matchesonscrollbar.css';
