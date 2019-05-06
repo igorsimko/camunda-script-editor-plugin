@@ -12318,11 +12318,8 @@ function PluginService(eventBus, canvas) {
 
       originalTA.parentNode.insertBefore(myTextArea, originalTA)
 
-      console.log(textAreaId)
-      console.log(observers.length)
-
-      cm.commands.autocomplete = function (cm) {
-        cm.showHint({ hint: cm.hint.anyword });
+      cm.commands.autocomplete = function (codeMirror) {
+        codeMirror.showHint({ hint: cm.hint.anyword });
       }
 
       var myCodeMirror = cm(function (elt) {
