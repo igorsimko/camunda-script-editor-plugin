@@ -1,4 +1,4 @@
-require("./lib/codemirror.js")
+var cm = require("./lib/codemirror.js")
 require("./lib/codemirror/groovy.js")
 require("./addon/edit/matchbrackets.js")
 require("./addon/hint/show-hint.js")
@@ -123,11 +123,11 @@ function PluginService(eventBus, canvas) {
       console.log(textAreaId)
       console.log(observers.length)
 
-      CodeMirror.commands.autocomplete = function (cm) {
-        cm.showHint({ hint: CodeMirror.hint.anyword });
+      cm.commands.autocomplete = function (cm) {
+        cm.showHint({ hint: cm.hint.anyword });
       }
 
-      var myCodeMirror = CodeMirror(function (elt) {
+      var myCodeMirror = cm(function (elt) {
         myTextArea.parentNode.replaceChild(elt, myTextArea);
       }, {
           value: originalTA !== null ? originalTA.value : "",

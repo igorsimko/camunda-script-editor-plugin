@@ -12196,7 +12196,7 @@ CodeMirror.defineMIME("text/x-groovy", "groovy");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-__webpack_require__(/*! ./lib/codemirror.js */ "./client/lib/codemirror.js")
+var cm = __webpack_require__(/*! ./lib/codemirror.js */ "./client/lib/codemirror.js")
 __webpack_require__(/*! ./lib/codemirror/groovy.js */ "./client/lib/codemirror/groovy.js")
 __webpack_require__(/*! ./addon/edit/matchbrackets.js */ "./client/addon/edit/matchbrackets.js")
 __webpack_require__(/*! ./addon/hint/show-hint.js */ "./client/addon/hint/show-hint.js")
@@ -12321,11 +12321,11 @@ function PluginService(eventBus, canvas) {
       console.log(textAreaId)
       console.log(observers.length)
 
-      CodeMirror.commands.autocomplete = function (cm) {
-        cm.showHint({ hint: CodeMirror.hint.anyword });
+      cm.commands.autocomplete = function (cm) {
+        cm.showHint({ hint: cm.hint.anyword });
       }
 
-      var myCodeMirror = CodeMirror(function (elt) {
+      var myCodeMirror = cm(function (elt) {
         myTextArea.parentNode.replaceChild(elt, myTextArea);
       }, {
           value: originalTA !== null ? originalTA.value : "",
