@@ -33,6 +33,12 @@ function PluginService(eventBus, canvas) {
     setTimeout(assignOnElementShow, 50)
   });
 
+  eventBus.on('shape.move.end', function (event) {
+    setTimeout(initCodeEditor, 50)
+    setTimeout(assignOnClick, 50)
+    setTimeout(assignOnElementShow, 50)
+  });
+
   function assignOnClick() {
     document.querySelectorAll('.bpp-properties-tab-link > a').forEach(e => {
       e.onclick = function () {
@@ -140,12 +146,19 @@ function PluginService(eventBus, canvas) {
         });
 
       myCodeMirror.on('change', function (cMirror) {
-        // get value right from instance
-        document.querySelector('#cam-script-val[custom-id="' + cMirror.options.customId + '"]').value = cMirror.getValue();
-        document.querySelector('#cam-script-val[custom-id="' + cMirror.options.customId + '"]').click()
+        writeToNativeEditor(cMirror);
+      });
+
+      myCodeMirror.on('paste', function (cMirror) {
+        writeToNativeEditor(cMirror);
       });
     });
 
+  }
+
+  function writeToNativeEditor(cMirror) {
+    document.querySelector('#cam-script-val[custom-id="' + cMirror.options.customId + '"]').value = cMirror.getValue();
+    document.querySelector('#cam-script-val[custom-id="' + cMirror.options.customId + '"]').click();
   }
 }
 
