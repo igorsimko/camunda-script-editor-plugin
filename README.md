@@ -1,6 +1,8 @@
 
 # Camunda script editor plugin
 [CodeMirror](https://codemirror.net/) script editor for Camunda modeler.
+## Example
+<img src="https://github.com/igorsimko/camunda-script-editor-plugin/blob/master/example.png" width="450" height="400" />
 
 ## Building the Application
 
