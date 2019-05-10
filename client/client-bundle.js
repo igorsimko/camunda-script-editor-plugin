@@ -12355,8 +12355,11 @@ function PluginService(eventBus, canvas) {
   }
 
   function writeToNativeEditor(cMirror) {
-    document.querySelector('#cam-script-val[custom-id="' + cMirror.options.customId + '"]').value = cMirror.getValue();
-    document.querySelector('#cam-script-val[custom-id="' + cMirror.options.customId + '"]').click();
+    var cmEditor = document.querySelector('#cam-script-val[custom-id="' + cMirror.options.customId + '"]')
+    cmEditor.value = cMirror.getValue();
+    var evt = document.createEvent("Events");
+    evt.initEvent("change", true, true);
+    cmEditor.dispatchEvent(evt);
   }
 }
 
